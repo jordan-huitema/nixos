@@ -1,0 +1,3 @@
+[submodule "imports/nixvim-config"]
+	path = imports/nixvim-config
+	url = https://github.com/jordan-huitema/nixvim-config
