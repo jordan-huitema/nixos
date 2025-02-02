@@ -7,13 +7,14 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./devices/laptop.nix
     ./imports/core-pkgs.nix
-    #./imports/games.nix
+    ./imports/other.nix
+    ./imports/games.nix
     #./imports/env.nix
     ./imports/smb.nix
     ./imports/nixvim-config/nixvim.nix
   ];
-  hardware.cpu.intel.updateMicrocode = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -25,7 +26,6 @@
     "flakes"
   ];
 
-  networking.hostName = "nixos-laptop"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   time.timeZone = "Pacific/Auckland";
@@ -73,9 +73,6 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
   };
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "jordan";
@@ -89,24 +86,5 @@
 
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.forceImportRoot = false;
-  networking.hostId = "687bcb44";
-
   services.thermald.enable = true;
-  system.stateVersion = "24.11"; # Did you read the comment?
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
-  };
-  hardware.opengl = {
-    # hardware.graphics since NixOS 24.11
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      libvdpau-va-gl
-    ];
-  };
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-  }; # Force intel-media-driver
 }

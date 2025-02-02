@@ -7,14 +7,14 @@
     discord
     steamcontroller
     sc-controller
-    (kodi.withPackages (
-      kodiPkgs:
-        with kodiPkgs; [
-          youtube
-          netflix
-          joystick
-        ]
-    ))
+    # (kodi.withPackages (
+    #   kodiPkgs:
+    #     with kodiPkgs; [
+    #       youtube
+    #       netflix
+    #       joystick
+    #     ]
+    # ))
     musikcube
   ];
 
