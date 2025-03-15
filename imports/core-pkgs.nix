@@ -16,7 +16,6 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
-    firefox
     vlc
     git
     git-lfs
@@ -27,8 +26,16 @@
     gnomeExtensions.tophat
     zfs
     niv
+    nerdfonts
     alejandra
+    ripgrep
+    ripgrep-all
+    isort
+    black
+    prettierd
   ];
- 
+
+  services.flatpak.enable = true;
+
   services.thermald.enable = true;
 }

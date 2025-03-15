@@ -87,4 +87,7 @@
   boot.supportedFilesystems = ["zfs"];
   boot.zfs.forceImportRoot = false;
   services.thermald.enable = true;
+
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.enable = true;
 }

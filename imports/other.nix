@@ -7,5 +7,7 @@
     musikcube
     bambu-studio
     freecad
+    handbrake
+    shotcut
   ];
 }
