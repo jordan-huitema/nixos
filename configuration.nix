@@ -4,6 +4,10 @@
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
+  nix.settings = {
+    substitute = true;
+    auto-optimise-store = true;
+  };
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
